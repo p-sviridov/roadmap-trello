@@ -1,0 +1,26 @@
+.boards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 240px));
+  justify-content: center;
+  // grid-template-columns: repeat(1, 100%);
+  gap: 26px;
+}
+
+.board {
+  cursor: pointer;
+
+  .mat-card-title {
+    font-size: 21px;
+  }
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom:  24px;
+
+  .title {
+    font-size: 36px;
+    font-weight: 400;
+  }
+}

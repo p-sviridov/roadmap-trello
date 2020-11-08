@@ -1,0 +1,31 @@
+.columns-wrapper {
+  overflow-x: scroll;
+}
+
+.columns {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+}
+
+.column {
+  overflow-y: scroll;
+  width: 272px;
+  height: 500px;
+  border: 2px solid rgb(196, 194, 194);
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.tasks-wrapper {
+  overflow-y: hidden;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}

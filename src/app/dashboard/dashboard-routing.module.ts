@@ -2,27 +2,29 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { BoardComponent } from './board/board.component';
+import { BoardsListComponent } from './boards-list/boards-list.component';
 import { DashboardComponent } from './dashboard.component';
 
 const dashboardRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    // children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'boardlist',
-      //   pathMatch: 'full'
-      // },
-      // {
-      //   path: 'board/:id',
-      //   component: BoardComponent
-      // },
-      // {
-      //   path: 'boardlist',
-      //   component: BoardListComponent
-      // }
-    // ]
+    children: [
+      {
+        path: '',
+        redirectTo: 'boardslist',
+        pathMatch: 'full'
+      },
+      {
+        path: 'board/:boardId',
+        component: BoardComponent
+      },
+      {
+        path: 'boardslist',
+        component: BoardsListComponent
+      }
+    ]
   }
 ];
 
@@ -33,6 +35,9 @@ const dashboardRoutes: Routes = [
     RouterModule.forChild(
       dashboardRoutes
     )
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class DashboardRoutingModule { }
