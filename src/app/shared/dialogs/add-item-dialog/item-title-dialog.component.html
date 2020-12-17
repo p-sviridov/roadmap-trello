@@ -1,0 +1,40 @@
+<div class="add-item-dialog">
+  <h3 mat-dialog-title>{{data.title}}</h3>
+
+  <mat-dialog-content class="add-item-dialog-content">
+    <p class="text">{{ data.text }}</p>
+    <mat-form-field
+      class="project-name"
+      appearance="outline"
+      floatLabel="always"
+    >
+      <input
+        matInput
+        required
+        cdkFocusInitial
+        placeholder="Enter project name here"
+        class="form-control"
+        [formControl]="titleControl"
+      />
+      <mat-error *ngIf="titleControl.hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="add-item-dialog-action">
+    <button
+      mat-raised-button
+      (click)="handleConfirm()"
+      color="primary"
+      [disabled]="titleControl.hasError('required')"
+    >
+      {{data.confirmBtnText}}
+    </button>
+    
+    <button 
+      mat-stroked-button
+      (click)="handleCancel()"
+    >
+      {{data.cancelBtnText}}
+    </button>
+  </mat-dialog-actions>
+</div>

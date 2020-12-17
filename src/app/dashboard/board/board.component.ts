@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import board from './board';
+import { Column } from 'src/app/core/models/column.model';
+import { Board } from 'src/app/core/models/board.model';
 
 @Component({
   selector: 'app-board',
@@ -8,8 +9,9 @@ import board from './board';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
+  board: Board;
+  columns: Column[];
   boardId: string;
-  board = board;
 
   constructor(
     private _route: ActivatedRoute
@@ -17,7 +19,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.boardId = this._route.snapshot.paramMap.get('boardId');
-    console.log(this.boardId);
   }
 
 }

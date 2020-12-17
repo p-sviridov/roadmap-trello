@@ -3,14 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user$: Observable<User> 
+  private user$: Observable<User>;
+  private userId: string;
 
   constructor(
     private _firebaseAuth: AngularFireAuth,
@@ -21,12 +22,17 @@ export class AuthService {
     this.user$ = this._firebaseAuth.authState.pipe(
       switchMap(user => {
         if(user) {
+          this.userId = user.uid;
           return this._angularFirestore.doc<User>(`users/${user.uid}`).valueChanges()
         } else {
           return of(null);
         }
       })
     );
+  }
+
+  get currentUserId(): string {
+    return this.userId;
   }
 
   getUser(): Observable<User> {
@@ -53,12 +59,11 @@ export class AuthService {
     }
   }
 
-  updateUserData({ uid, email, displayName }: User): Promise<void> {
-    const userRef: AngularFirestoreDocument<User> = this._angularFirestore.doc(`users/${uid}`);
+  updateUserData({ uid, email, displayName }: any): Promise<void> {
+    const userRef: AngularFirestoreDocument = this._angularFirestore.doc(`users/${uid}`);
     const data = {
-      uid,
       email,
-      displayName
+      name: displayName
     }
 
     return userRef.set(data, { merge: true });

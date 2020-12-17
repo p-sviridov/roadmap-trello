@@ -1,34 +1,19 @@
 <div>
-  <h1>{{ board.name }}</h1>
+  <h1>{{ board?.title }}</h1>
   <div class="columns-wrapper">
     <div class="columns">
-      <div *ngFor="let column of board.columns" class="column">
+      <div *ngFor="let column of columns" class="column">
         <div class="tasks-wrapper">
           <div class="tasks">
-            <div *ngFor="let task of column.tasks" class="task">
-              <h4>{{ task.name }}</h4>
-              <p>
-                {{ task.description }}
-              </p>
-              <h4>{{ task.name }}</h4>
-              <p>
-                {{ task.description }}
-              </p>
-              <h4>{{ task.name }}</h4>
-              <p>
-                {{ task.description }}
-              </p>
-              <h4>{{ task.name }}</h4>
-              <p>
-                {{ task.description }}
-              </p>
-              <h4>{{ task.name }}</h4>
+            <div *ngFor="let task of column?.tasks" class="task">
+              <h4>{{ task.title }}</h4>
               <p>
                 {{ task.description }}
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

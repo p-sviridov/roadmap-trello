@@ -1,10 +1,27 @@
 <div class="title-container">
-  <p class="title">My boards</p>
+  <h2>Boards</h2>
 </div>
-<div class="boards-container">  
+
+<div *ngIf="boards?.length; else noBoards" class="boards-container">  
   <div *ngFor="let board of boards" class="board" (click)="viewBoard(board.id)">
     <mat-card>
-      <mat-card-title>{{ board.name }}</mat-card-title>
+      <mat-card-title>{{ board.title }}</mat-card-title>
     </mat-card>
   </div>
 </div>
+
+<ng-template #noBoards>
+  <div class="no-boards-message-container">
+    You have no active boards.
+  </div>
+</ng-template>
+
+<button
+  mat-raised-button
+  class="add-board-btn"
+  color="primary"
+  (click)="openCreateBoardDialog()"
+>
+  New board
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,39 @@
+<div class="confirm-dialog">
+  <h3 mat-dialog-title>{{data.title}}</h3>
+  <mat-dialog-content class="confirm-dialog-content">
+    <p class="text">{{data.text}}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions class="confirm-dialog-actions">
+
+    <!-- default confirm button -->
+    <button
+      *ngIf="!isRemove"
+      mat-raised-button
+      cdkFocusInitial
+      (click)="handleConfirm()"
+      color="primary"
+    >
+      {{data.confirmBtnText}}
+    </button>
+    <!-- /default confirm button -->
+
+    <!-- warn confirm button -->
+    <button
+      *ngIf="isRemove"
+      mat-raised-button
+      cdkFocusInitial
+      (click)="handleConfirm()"
+      color="warn"
+    >
+      {{data.confirmBtnText}}
+    </button>
+    <!-- /warn confirm button -->
+
+    <button 
+      mat-stroked-button
+      (click)="handleCancel()"
+    >
+      {{data.cancelBtnText}}
+    </button>
+  </mat-dialog-actions>
+</div>
