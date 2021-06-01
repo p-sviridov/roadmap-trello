@@ -46,6 +46,10 @@ export class FirestoreService {
       );
   }
 
+  addDocument<T>(ref: string, value: any): any{
+    return this._afs.collection(ref).add(value);
+  }
+
   private mapKeysToCollectionObjects<T>(actions: DocumentChangeAction<T>[]): T[] {
     return actions.map((action: DocumentChangeAction<T>) => {
       const data = action.payload.doc.data() as T;

@@ -12,7 +12,7 @@
 .column {
   overflow-y: scroll;
   width: 272px;
-  height: 500px;
+  height: calc(100vh - 194px);
   border: 2px solid rgb(196, 194, 194);
 
   &:not(:last-child) {

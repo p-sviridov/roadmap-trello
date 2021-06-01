@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Column } from 'src/app/core/models/column.model';
 import { Board } from 'src/app/core/models/board.model';
+import { BoardsService } from 'src/app/core/services/boards.service';
 
 @Component({
   selector: 'app-board',
@@ -14,11 +15,15 @@ export class BoardComponent implements OnInit {
   boardId: string;
 
   constructor(
-    private _route: ActivatedRoute
+    private route: ActivatedRoute,
+    private boardsService: BoardsService
   ) { }
 
   ngOnInit(): void {
-    this.boardId = this._route.snapshot.paramMap.get('boardId');
+    this.boardId = this.route.snapshot.paramMap.get('boardId');
+    this.boardsService.getColumns(this.boardId).subscribe(columns => {
+      this.columns = columns;
+    });
   }
 
 }

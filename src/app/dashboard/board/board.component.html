@@ -3,6 +3,7 @@
   <div class="columns-wrapper">
     <div class="columns">
       <div *ngFor="let column of columns" class="column">
+        <div class="column-title">{{ column.title }}</div>
         <div class="tasks-wrapper">
           <div class="tasks">
             <div *ngFor="let task of column?.tasks" class="task">
@@ -13,7 +14,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
