@@ -1,5 +1,5 @@
 {
-  "name": "roadmap-trello",
+  "name": "simple-task-manager",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,8 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +22,9 @@
     "@angular/platform-browser": "~10.2.0",
     "@angular/platform-browser-dynamic": "~10.2.0",
     "@angular/router": "~10.2.0",
+    "@ngrx/effects": "^12.0.0",
+    "@ngrx/store": "^12.0.0",
+    "@ngrx/store-devtools": "^12.0.0",
     "firebase": "^8.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

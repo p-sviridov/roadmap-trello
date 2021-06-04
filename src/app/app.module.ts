@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { RootStoreModule } from './root-store/root-store.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AngularFireAuthModule,
     AngularFireMessagingModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RootStoreModule
   ],
   providers: [
     AngularFirestore
